@@ -72,7 +72,7 @@ const useScroll = (onScroll) => {
 
   useEffect(() => {
     window.addEventListener("DOMMouseScroll", handleScroll, false); // older FF
-    window.addEventListener("mousewheel", handleScroll, wheelOpt); // modern desktop
+    window.addEventListener("wheel", handleScroll, wheelOpt); // modern desktop
     window.addEventListener("touchstart", handleTouchMove, wheelOpt); // mobile
     window.addEventListener("keydown", handleScrollKeys, false);
   }, [handleScrollKeys, handleTouchMove, wheelOpt, handleScroll]);

@@ -19,7 +19,7 @@ const Service = ({ service, styles }) => {
     <article className={styles["services__item"]}>
       <div className={styles["services__inner"]}>
         <h4 className={styles["services__header"]}>{title}</h4>
-        <p className={styles["services__img-container"]}>
+        <div className={styles["services__img-container"]}>
           <Image
             className={styles["services__img"]}
             src={img}
@@ -27,7 +27,7 @@ const Service = ({ service, styles }) => {
             alt={title}
             layout="fill"
           />
-        </p>
+        </div>
         <p className={styles["services__description"]}>{description}</p>
       </div>
       <span className={styles["services__price"]}>
