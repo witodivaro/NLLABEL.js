@@ -14,7 +14,6 @@ import { getSlogans } from "./api/slogans";
 import { getServices } from "./api/services";
 
 function App({ services, slogans }) {
-  console.log(slogans);
   return (
     <>
       <Header />
