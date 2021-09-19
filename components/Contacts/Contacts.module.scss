@@ -1,0 +1,165 @@
+@import "../../styles/scaffolding";
+@import "../../styles/fonts";
+
+.contacts {
+  position: relative;
+
+  width: 100%;
+  margin: 0 auto;
+
+  display: grid;
+  column-gap: 40px;
+  row-gap: 60px;
+  grid-template-columns: repeat(3, 290px);
+  justify-content: center;
+
+  background-color: $grey;
+
+  @include mobile {
+    grid-template-columns: 290px;
+    row-gap: 30px;
+  }
+
+  &__header {
+    grid-column: span 3;
+
+    margin: 0;
+    margin-top: 80px;
+
+    width: 100%;
+
+    text-align: center;
+    color: $dark-grey;
+    text-transform: uppercase;
+
+    letter-spacing: 3px;
+    font-weight: 1;
+    font-family: $MyriadProRegular;
+    font-size: 20px;
+
+    @include mobile {
+      grid-column: span 1;
+      margin-top: 40px;
+    }
+  }
+
+  &__item {
+    height: 270px;
+    width: 290px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+
+    font-family: $OpenSansRegular;
+
+    background-color: #fff;
+    box-shadow: 1px 1px 0px 0px rgb(231, 231, 231);
+  }
+
+  &__name {
+    padding: 0;
+    margin: 0;
+    margin-top: 25px;
+
+    color: $brown-grey;
+    text-transform: uppercase;
+
+    font-weight: 1;
+    font-size: 16px;
+  }
+
+  &__details {
+    padding: 0;
+    margin: 0;
+    margin-top: 15px;
+
+    font-size: 14px;
+
+    color: $light-grey;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &__link {
+    text-shadow: 0 0 1px black;
+    transition: opacity 0.1s ease;
+
+    &:hover {
+      transition: opacity 0.15s ease;
+      opacity: 0.6;
+    }
+  }
+
+  &__photo {
+    position: relative;
+
+    margin: 0;
+    padding: 0;
+
+    height: 145px;
+    width: 100%;
+
+    background-color: $brown-grey;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-size: 100%;
+    }
+
+    &--email {
+      background-image: url("/img/email-background@1x.jpg");
+
+      @include retina {
+        background-image: url("/img/email-background@2x.jpg");
+      }
+
+      &::after {
+        background-image: url("/img/email-icon.svg");
+
+        width: 43px;
+        height: 50px;
+      }
+    }
+
+    &--telegram {
+      background-image: url("/img/telegram-background@1x.jpg");
+
+      @include retina {
+        background-image: url("/img/telegram-background@2x.jpg");
+      }
+
+      &::after {
+        background-image: url("/img/telegram-logo-icon.svg");
+
+        width: 43px;
+        height: 50px;
+      }
+    }
+
+    &--phone {
+      background-image: url("/img/phone-background@1x.jpg");
+
+      @include retina {
+        background-image: url("/img/phone-background@2x.jpg");
+      }
+
+      &::after {
+        background-image: url("/img/phone-icon.svg");
+
+        width: 43px;
+        height: 50px;
+      }
+    }
+  }
+}

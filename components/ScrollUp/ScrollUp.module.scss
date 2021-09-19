@@ -1,0 +1,13 @@
+.scroll-up {
+  z-index: 5;
+  top: 90vh;
+  left: 20px;
+  position: fixed;
+  transform: rotate(180deg);
+
+  animation: fadeIn 0.2s ease;
+
+  &:hover {
+    transform: rotate(180deg) scale(1.2);
+  }
+}

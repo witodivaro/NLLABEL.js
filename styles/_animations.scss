@@ -1,0 +1,42 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-1000%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 0.2s;
+}
+
+.fadeOut {
+  animation-name: fadeOut;
+  animation-duration: 0.4s;
+}

@@ -1,0 +1,59 @@
+@import "../../styles/scaffolding.scss";
+@import "../../styles/fonts.scss";
+
+.team {
+  width: 1170px;
+  margin: 0 auto;
+  padding-top: 35px;
+  overflow: hidden;
+
+  @include mobile {
+    padding: 0 20px;
+    padding-top: 35px;
+
+    width: auto;
+    max-width: 380px;
+  }
+
+  &__header {
+    margin: 0;
+    padding: 0;
+
+    font-family: $MyriadProRegular;
+    font-size: 20px;
+    letter-spacing: 3px;
+    font-weight: 1;
+
+    color: $dark-grey;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__info {
+    width: 450px;
+    margin: 0 auto;
+    padding: 0;
+    margin-top: 30px;
+
+    font-size: 14px;
+    font-family: $OpenSansRegular;
+
+    text-align: center;
+    color: $light-grey;
+
+    @include mobile {
+      margin-top: 10px;
+      width: auto;
+      max-width: 450px;
+    }
+  }
+
+  &__slider {
+    margin-top: 80px;
+    margin-bottom: 40px;
+
+    @include mobile {
+      margin-top: 30px;
+    }
+  }
+}

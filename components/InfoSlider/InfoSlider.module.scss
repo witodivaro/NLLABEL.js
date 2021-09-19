@@ -1,0 +1,163 @@
+@import "../../styles/scaffolding.scss";
+@import "../../styles/fonts.scss";
+@import "../../styles/animations.scss";
+
+.slider {
+  width: 100%;
+  min-height: 330px;
+  padding-top: 40px;
+  padding-bottom: 70px;
+  position: relative;
+
+  background-color: $grey;
+
+  @include mobile {
+    min-height: 310px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+  }
+
+  &__header {
+    text-align: center;
+  }
+
+  &__description {
+    margin: 0 auto;
+
+    text-align: center;
+  }
+
+  &__tabcontent {
+    margin: 0 auto;
+    margin-top: 30px;
+
+    display: flex;
+    width: 1000px;
+    align-items: center;
+    flex-direction: column;
+
+    @include mobile {
+      width: auto;
+    }
+  }
+
+  &__sub-header {
+    margin: 0;
+
+    font-family: $OpenSansRegular;
+    font-weight: 1;
+    font-size: 20px;
+
+    color: $dark-grey;
+
+    @include mobile {
+      margin-top: 0;
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+
+  &__sub-content {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  &__sub-wrapper {
+    display: flex;
+  }
+
+  &__info {
+    font-family: $OpenSansBold;
+    font-size: 16px;
+    width: 400px;
+
+    color: $light-grey;
+
+    @include mobile {
+      margin: 0 auto;
+      margin-top: 20px;
+      padding: 0 20px;
+
+      width: auto;
+      max-width: 450px;
+
+      text-align: center;
+    }
+
+    &--wide {
+      margin-left: 30px;
+      width: 520px;
+      font-size: 14px;
+
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+
+  &__navigation {
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    list-style: none;
+
+    @include mobile {
+      top: auto;
+      bottom: 30px;
+    }
+  }
+
+  &__item {
+    margin-left: 30px;
+
+    width: 53px;
+    height: 53px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &__button {
+    width: 53px;
+    height: 53px;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: $light-grey;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 37px;
+    transition-duration: 0.2s;
+    transition-property: background-color;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: $dark-pink;
+    }
+
+    &--recording {
+      background-image: url("/img/microphone-icon.png");
+    }
+
+    &--music {
+      background-image: url("/img/headphones-icon.png");
+    }
+
+    &--promotion {
+      background-image: url("/img/disco-icon.png");
+    }
+
+    &--active {
+      background-color: $pink;
+
+      &:hover {
+        background-color: $pink;
+      }
+    }
+  }
+}

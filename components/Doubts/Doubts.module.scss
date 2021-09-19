@@ -1,0 +1,79 @@
+@import "../../styles/scaffolding.scss";
+@import "../../styles/fonts.scss";
+
+.doubts {
+  position: relative;
+
+  // margin-top: 50px;
+  padding: 75px 0px;
+
+  width: 100%;
+
+  background-color: $grey;
+  background-image: url("/img/doubts-background-desktop@1x.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 100%;
+
+  @include mobile {
+    margin: 0;
+  }
+
+  &__wrapper {
+    position: relative;
+
+    padding: 1px 0;
+    margin: 0 auto;
+
+    width: 1170px;
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  &__header {
+    margin: 0;
+    padding: 0;
+
+    color: $grey;
+    text-transform: uppercase;
+    font-family: $MyriadProRegular;
+    font-weight: 1;
+    letter-spacing: 3px;
+
+    @include mobile {
+      text-align: center;
+    }
+  }
+
+  &__quote {
+    padding: 0;
+    margin-top: 50px;
+
+    @include mobile {
+      margin-top: 20px;
+    }
+  }
+
+  &__imac {
+    position: absolute;
+    right: 0;
+    top: -120px;
+
+    height: 330px;
+    width: 410px;
+
+    background-image: url("/img/imac-nllabel-desktop@1x.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    @include retina {
+      background-image: url("/img/imac-nllabel-desktop@2x.png");
+    }
+
+    @include mobile {
+      display: none;
+    }
+  }
+}

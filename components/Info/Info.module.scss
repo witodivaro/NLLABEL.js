@@ -1,0 +1,146 @@
+@import "../../styles/scaffolding.scss";
+@import "../../styles/fonts.scss";
+
+.info {
+  position: relative;
+
+  width: 100%;
+
+  &__wrapper {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 70px;
+
+    @include mobile {
+      min-width: 320px;
+      width: 100%;
+    }
+  }
+
+  &__about-us {
+    position: relative;
+
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: repeat(2, 450px);
+    justify-content: center;
+
+    padding: 100px 0;
+
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      margin-top: 40px;
+      margin-bottom: 40px;
+      padding: 0;
+    }
+
+    .info__picture {
+      order: 1;
+    }
+
+    .info__header {
+      order: 0;
+    }
+
+    .info__description {
+      order: 2;
+    }
+
+    .info__link {
+      order: 3;
+    }
+  }
+
+  &__header {
+    margin: 0;
+    padding: 0;
+
+    font-family: $MyriadProRegular;
+    font-size: 20px;
+    line-height: 22px;
+    letter-spacing: 3px;
+
+    font-weight: 100;
+    text-transform: uppercase;
+    color: $dark-grey;
+
+    @include mobile {
+      text-align: center;
+    }
+  }
+
+  &__description {
+    margin-top: 20px;
+    margin-bottom: 0;
+
+    width: 450px;
+    color: $light-grey;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    font-family: $OpenSansRegular;
+
+    @include mobile {
+      padding: 0 20px;
+
+      width: 100%;
+      max-width: 450px;
+      box-sizing: border-box;
+
+      text-align: center;
+    }
+
+    &--pink {
+      color: $pink;
+    }
+
+    &--dark-grey {
+      color: $dark-grey;
+    }
+  }
+
+  &__link {
+    margin-right: auto;
+
+    grid-column: 1;
+    margin-top: 120px;
+
+    @include mobile {
+      margin-right: 0;
+      margin-top: 20px;
+    }
+  }
+
+  &__picture {
+    grid-column: 2;
+    grid-row: 1/4;
+    justify-self: flex-end;
+
+    margin: 0;
+    margin-right: 30px;
+    padding: 0;
+
+    background-image: url("/img/microphone.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
+    width: 220px;
+    height: 220px;
+
+    @include mobile {
+      margin: 0;
+      margin-top: 40px;
+      order: 2;
+    }
+  }
+
+  &__slider {
+    @include mobile {
+      margin-top: 40px;
+    }
+  }
+}

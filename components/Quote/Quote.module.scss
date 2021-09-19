@@ -1,0 +1,53 @@
+@import "../../styles/scaffolding.scss";
+@import "../../styles/fonts.scss";
+
+.quote {
+  width: 590px;
+
+  color: $white-grey;
+  font-family: $OpenSansRegular;
+
+  @include mobile {
+    margin: 0 auto;
+    width: calc(100% - 40px);
+
+    max-width: 590px;
+    text-align: center;
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 28px;
+    font-weight: 500;
+
+    &--pink {
+      color: $pink;
+    }
+
+    @include mobile {
+      margin: 0;
+      margin-top: 20px;
+      padding: 0;
+    }
+  }
+
+  &__author {
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+
+    font-size: 14px;
+    line-height: 24px;
+
+    @include mobile {
+      margin: 0;
+      margin-top: 10px;
+      padding: 0;
+    }
+  }
+
+  &__name {
+    font-family: $OpenSansBold;
+    font-weight: 1;
+  }
+}

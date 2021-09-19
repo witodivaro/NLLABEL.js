@@ -1,0 +1,42 @@
+@import "../../styles/scaffolding.scss";
+@import "../../styles/fonts.scss";
+
+.link {
+  padding: 10px 25px;
+
+  font-family: $OpenSansRegular;
+  font-size: 16px;
+
+  color: $dark-grey;
+  border: 1px solid $dark-grey;
+  border-radius: 50px;
+
+  background: none;
+  cursor: pointer;
+  outline: none;
+  opacity: 1;
+
+  transition: 0.2s ease;
+
+  &:hover {
+    background-color: $grey;
+  }
+
+  &--white {
+    border-color: white;
+    color: white;
+
+    &:hover {
+      background-color: rgba(6, 6, 6, 0.3);
+    }
+  }
+
+  &--pink {
+    border-color: $pink;
+    color: $pink;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}

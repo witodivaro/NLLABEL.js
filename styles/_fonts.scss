@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "Big John Bold";
+  font-display: swap;
+  src: url("/fonts/BigJohnPRO-Bold.woff") format("woff"),
+    url("/fonts/BigJohnPRO-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "MyriadPro Regular";
+  font-display: swap;
+  src: url("/fonts/MyriadPro-Regular.woff") format("woff"),
+    url("/fonts/MyriadPro-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Open Sans Regular";
+  font-display: swap;
+  src: url("/fonts/OpenSans-Regular.woff") format("woff"),
+    url("/fonts/OpenSans-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Open Sans Bold";
+  font-display: swap;
+  src: url("/fonts/OpenSans-Bold.woff") format("woff"),
+    url("/fonts/OpenSans-Bold.woff2") format("woff2");
+}
+
+$BigJohnBold: "Big John Bold", Arial, sans-serif;
+$MyriadProRegular: "MyriadPro Regular", Arial, sans-serif;
+$OpenSansRegular: "Open Sans Regular", Arial, sans-serif;
+$OpenSansBold: "Open Sans Bold", Arial, sans-serif;
