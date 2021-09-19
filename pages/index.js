@@ -41,8 +41,8 @@ export const getServerSideProps = async () => {
 
   const [servicesRes, introsRes] = await Promise.all(operations);
 
-  const { services = [] } = servicesRes?.data;
-  const { slogans = [] } = introsRes?.data;
+  const { services = [] } = servicesRes?.data || {};
+  const { slogans = [] } = introsRes?.data || {};
 
   return {
     props: {
