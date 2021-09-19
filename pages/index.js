@@ -12,10 +12,12 @@ import Team from "../components/Team/Team";
 
 import { getSlogans } from "./api/slogans";
 import { getServices } from "./api/services";
+import Head from "../components/Head/Head";
 
 function App({ services, slogans }) {
   return (
     <>
+      <Head />
       <Header />
       <main>
         <Intro slogans={slogans} />
