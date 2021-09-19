@@ -2,18 +2,17 @@ import React, { useState } from "react";
 
 import Service from "./components/Service";
 
-import SERVICES from "./mock";
 import { PREVIEW_SERVICES_COUNT } from "./constants";
 
 import styles from "./Services.module.scss";
 
-const Services = () => {
+const Services = ({ services }) => {
   const [isShowingMore, setIsShowingMore] = useState(false);
 
   const servicesToShowCount = isShowingMore
-    ? SERVICES.length
+    ? services.length
     : PREVIEW_SERVICES_COUNT;
-  const shownServices = SERVICES.slice(0, servicesToShowCount);
+  const shownServices = services.slice(0, servicesToShowCount);
 
   const showMore = () => setIsShowingMore(true);
 

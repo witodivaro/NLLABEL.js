@@ -25,7 +25,8 @@ const Service = ({ service, styles }) => {
             src={img}
             objectFit="cover"
             alt={title}
-            layout="fill"
+            width={300}
+            height={200}
           />
         </div>
         <p className={styles["services__description"]}>{description}</p>

@@ -10,7 +10,7 @@ import useScroll from "../../hooks/useScroll";
 
 const SCROLL_DELAY = 100;
 
-const Intro = () => {
+const Intro = ({ slogans }) => {
   const textRef = useRef();
   const introRef = useRef();
 
@@ -31,16 +31,10 @@ const Intro = () => {
     if (textRef.current) {
       animateText({
         container: textRef.current,
-        phrases: [
-          "NL Label",
-          "Создаем лучшую музыку",
-          "Продвигаем талантливых артистов",
-          "Работаем в Минске",
-          "Захватываем чарты!",
-        ],
+        phrases: slogans,
       });
     }
-  }, [textRef]);
+  }, [textRef, slogans]);
 
   const handleDropdownClick = () => {
     window.scrollTo({ top: introRef.current.clientHeight });

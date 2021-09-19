@@ -10,15 +10,19 @@ import ScrollUp from "../components/ScrollUp/ScrollUp";
 import Services from "../components/Services/Services";
 import Team from "../components/Team/Team";
 
-function App() {
+import { getSlogans } from "./api/slogans";
+import { getServices } from "./api/services";
+
+function App({ services, slogans }) {
+  console.log(slogans);
   return (
     <>
       <Header />
       <main>
-        <Intro />
+        <Intro slogans={slogans} />
         <Info />
         <InfoSlider />
-        <Services />
+        <Services services={services} />
         <Doubts />
         <Team />
         <ContactUs />
@@ -29,5 +33,23 @@ function App() {
     </>
   );
 }
+
+export const getServerSideProps = async () => {
+  const operations = [];
+  operations.push(getServices());
+  operations.push(getSlogans());
+
+  const [servicesRes, introsRes] = await Promise.all(operations);
+
+  const { services = [] } = servicesRes?.data;
+  const { slogans = [] } = introsRes?.data;
+
+  return {
+    props: {
+      services,
+      slogans,
+    },
+  };
+};
 
 export default App;
