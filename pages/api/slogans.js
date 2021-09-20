@@ -1,13 +1,20 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import database from "../../database/database";
+import authWall from "../../middleware/auth.middleware";
 import createApiHandler from "../../utils/createApiHandler";
 
-export default function handler(req, res) {
-  console.log(req.method);
+export default async function handler(req, res) {
   switch (req.method) {
     case "GET":
       return getSlogansHandler(req, res);
+  }
+
+  const { passed } = await authWall(req, res);
+  if (!passed) return;
+  console.log(passed);
+
+  switch (req.method) {
     case "PUT":
       return putSloganHandler(req, res);
     case "DELETE":
@@ -20,17 +27,19 @@ export default function handler(req, res) {
 }
 
 const postSloganHandler = async (req, res) => {
-try {
-  const { text } = req.body;
+  try {
+    console.log(req.headers);
 
-  const slogan = await database.insertOne("slogans", { text });
+    const { text } = req.body;
 
-  res.status(200).json({ slogan })
-} catch (err) {
-  console.error(err);
-  res.status(500).json(err);
-}
-}
+    const slogan = await database.insertOne("slogans", { text });
+
+    res.status(200).json({ slogan });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+};
 
 const deleteSloganHandler = async (req, res) => {
   try {
@@ -43,7 +52,7 @@ const deleteSloganHandler = async (req, res) => {
     console.error(err);
     res.status(500).json(err);
   }
-}
+};
 
 const putSloganHandler = async (req, res) => {
   try {
@@ -55,7 +64,7 @@ const putSloganHandler = async (req, res) => {
     console.error(err);
     res.status(500).json(err);
   }
-}
+};
 
 export const getSlogansHandler = async (req, res) => {
   try {

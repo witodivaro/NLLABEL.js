@@ -15,7 +15,8 @@ export const authenticate = async (req, options) => {
   if (!validateJwtToken(accessToken)) isAllowed = false;
 
   if (csrf) {
-    const csrfToken = req.headers["X-CSRF-TOKEN"];
+    const csrfToken = req.headers["x-csrf-token"];
+    console.log(accessToken, csrfToken);
     if (!(await verifyCsrfToken(csrfToken, accessToken))) isAllowed = false;
   }
 
