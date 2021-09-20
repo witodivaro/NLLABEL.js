@@ -13,12 +13,16 @@ const SCROLL_DELAY = 100;
 const Intro = ({ slogans }) => {
   const textRef = useRef();
   const introRef = useRef();
+  const aboutUsRef = useRef();
 
-  const scrollHandle = (_, isScrollingUp) => {
-    if (!isScrollingUp) {
-      const introHeight = introRef?.current?.clientHeight;
-      if (window.scrollY < introHeight) {
-        window.scrollTo({ top: introHeight });
+  const scrollHandle = (e, isScrollingUp) => {
+    e.preventDefault();
+    const introHeight = introRef?.current?.clientHeight;
+    if (window.scrollY < introHeight) {
+      if (isScrollingUp) {
+        window.scrollTo({ top: 0 });
+      } else {
+        aboutUsRef.current.scrollIntoView(true);
       }
     }
   };
@@ -26,6 +30,10 @@ const Intro = ({ slogans }) => {
   const throttledScrollHandle = useThrottling(scrollHandle, SCROLL_DELAY);
 
   useScroll(throttledScrollHandle);
+
+  useEffect(() => {
+    aboutUsRef.current = document.querySelector('#about-us');
+  }, [aboutUsRef])
 
   useEffect(() => {
     if (textRef.current) {
