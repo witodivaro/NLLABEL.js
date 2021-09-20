@@ -42,7 +42,7 @@
     padding: 15px;
     margin-bottom: 20px;
 
-    box-shadow: 0 0 3px 0px $pink;
+    box-shadow: 0 0 3px 0px $primary;
     border-radius: 10px;
 
     width: 30%;
@@ -54,7 +54,7 @@
     animation: slideIn 0.2s ease;
 
     &:hover {
-      box-shadow: 0 0 6px 1px $pink;
+      box-shadow: 0 0 6px 1px $primary;
 
       .services__header:after {
         width: 100%;
@@ -108,7 +108,7 @@
     opacity: 0.5;
     letter-spacing: -1px;
 
-    color: $pink;
+    color: $primary;
 
     &-for {
       font-size: 18px;
@@ -201,7 +201,7 @@
 
     span:nth-last-child(1) {
       margin-left: auto;
-      color: $pink;
+      color: $primary;
     }
 
     &:hover {
@@ -217,7 +217,7 @@
   &__show-more {
     margin: 0 auto;
 
-    box-shadow: 0 0 2px 1px $pink;
+    box-shadow: 0 0 2px 1px $primary;
     border-radius: 10px;
     border: none;
     background: $grey;
@@ -228,10 +228,10 @@
     transition: 0.1s ease;
 
     &:hover {
-      box-shadow: 0 0 4px 1px $pink;
+      box-shadow: 0 0 4px 1px $primary;
       background: white;
-      color: $pink;
-      border-color: $pink;
+      color: $primary;
+      border-color: $primary;
     }
   }
 }

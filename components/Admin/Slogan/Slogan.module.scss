@@ -1,0 +1,23 @@
+@import '../../../styles/scaffolding';
+
+.slogan {
+  margin-bottom: 20px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  border: 1px solid $primary;
+  border-radius: 5px;
+
+
+  textarea {
+    margin-top: 10px;
+  }
+
+  &__buttons {
+    margin: 10px 0;
+    justify-content: center;
+    display: flex;
+  }
+
+}

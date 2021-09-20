@@ -13,8 +13,9 @@ import Team from "../components/Team/Team";
 import { getSlogans } from "./api/slogans";
 import { getServices } from "./api/services";
 import Head from "../components/Head/Head";
+import { getTeam } from "./api/team";
 
-function App({ services, slogans }) {
+function App({ services, slogans, team }) {
   return (
     <>
       <Head />
@@ -25,7 +26,7 @@ function App({ services, slogans }) {
         <InfoSlider />
         <Services services={services} />
         <Doubts />
-        <Team />
+        <Team team={team} />
         <ContactUs />
         <Contacts />
       </main>
@@ -39,12 +40,14 @@ export const getServerSideProps = async () => {
   const operations = [];
   operations.push(getServices());
   operations.push(getSlogans());
+  operations.push(getTeam());
 
   let services = [];
-  let slogans = ['NL Label'];
+  let team = [];
+  let slogans = ["NL Label"];
 
   try {
-    const [servicesRes, slogansRes] = await Promise.all(operations);
+    const [servicesRes, slogansRes, teamRes] = await Promise.all(operations);
   
     if (servicesRes.data) {
       services = servicesRes.data.services;
@@ -53,6 +56,10 @@ export const getServerSideProps = async () => {
     if (slogansRes.data) {
       slogans = slogansRes.data.slogans;
     }
+
+    if (teamRes.data) {
+      team = teamRes.data.team;
+    }
   } catch (e) {
     console.error(e);
   }
@@ -60,7 +67,8 @@ export const getServerSideProps = async () => {
   return {
     props: {
       services,
-      slogans,
+      slogans: slogans.map(({ text }) => text),
+      team
     },
   };
 };

@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid';
+
 import { converters } from "./converters";
 
 const fs = require("fs").promises;
@@ -52,13 +54,67 @@ class Database {
     return converters[format](this.data[collection]);
   }
 
+  async updateOne(collection, _id, update) {
+    if (!this.data[collection]) {
+      await this._load(collection);
+    }
+
+    const updatedData = {
+      ...this.data[collection],
+      [_id]: update,
+    };
+
+    await this.update(collection, updatedData);
+
+    this._clearData(collection);
+
+    return update;
+  }
+
   async update(collection, data) {
     await this._writeData(collection, JSON.stringify(data));
 
     this._clearData(collection);
   }
 
-  async insertMany(collection, data) {}
+  async deleteOne(collection, _id) {
+    if (!this.data[collection]) {
+      await this._load(collection);
+    }
+
+    const updatedData = {};
+
+    for (const key in this.data[collection]) {
+      console.log(this.data[collection][key]._id, _id);
+      if (this.data[collection][key]._id !== _id) {
+        updatedData[key] = this.data[collection][key];
+      }
+    }
+
+    console.log(updatedData)
+
+    await this.update(collection, updatedData);
+  }
+
+  async insertOne(collection, data) {
+    if (!this.data[collection]) {
+      await this._load(collection);
+    }
+
+    const payload = {
+      ...data,
+      _id: uuid(),
+    };
+
+    const updatedData = {
+      ...this.data[collection],
+      [payload._id]: payload,
+    };
+
+    await this.update(collection, updatedData);
+
+    return payload;
+  }
 }
 
 export default new Database();

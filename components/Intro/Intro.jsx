@@ -52,7 +52,7 @@ const Intro = ({ slogans }) => {
     <section ref={introRef} className={styles.intro} id="intro">
       <div className={styles.intro__background}></div>
       <p ref={textRef} className={styles.intro__slogan}>
-        NL Label - музыка будущего
+        {slogans[0]}
       </p>
 
       <Dropdown
