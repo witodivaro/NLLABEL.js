@@ -21,13 +21,16 @@
     width: 100%;
   }
 
-  &__link {
+  &__button {
     padding: 5px 10px;
 
     text-decoration: none;
     color: white;
     font-family: $OpenSansRegular;
     font-size: 16px;
+    border: none;
+    background: none;
+    cursor: pointer;
 
     @include mobile {
       padding: 10px 20px;

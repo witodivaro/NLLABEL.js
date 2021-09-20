@@ -1,33 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
-import { isElementVisible } from "../../utils/utils";
-
-const Anchor = ({ href, className, activeClassName, children }) => {
-  const [isActive, setIsActive] = useState(false);
+const Anchor = ({ href, className, children }) => {
+  const elemRef = useRef();
 
   useEffect(() => {
-    const elem = document.querySelector(href);
+    elemRef.current = document.querySelector(href);
+  }, [href]);
 
-    if (isElementVisible(elem)) setIsActive(true);
+  const handleClick = () => {
+    elemRef?.current?.scrollIntoView();
+  }
 
-    const scrollHandler = () => {
-      if (isElementVisible(elem)) {
-        if (!isActive) setIsActive(true);
-      } else if (isActive) setIsActive(false);
-    };
-
-    document.addEventListener("scroll", scrollHandler);
-    return () => document.removeEventListener("scroll", scrollHandler);
-  }, [isActive, href]);
-
-  return (
-    <a
-      href={href}
-      className={`${className} ${isActive ? activeClassName : ""}`}
-    >
-      {children}
-    </a>
-  );
+  return <button onClick={handleClick} className={className}>{children}</button>;
 };
 
 export default Anchor;
