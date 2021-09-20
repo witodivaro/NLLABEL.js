@@ -26,6 +26,7 @@
     transform: translateX(-50%);
 
     width: 600px;
+    height: 10%;
 
     letter-spacing: 0.2em;
     font-family: $MyriadProRegular;
@@ -33,6 +34,7 @@
     font-size: 35px;
     text-align: center;
     text-transform: uppercase;
+    word-break: normal;
 
     color: white;
 

@@ -40,10 +40,22 @@ export const getServerSideProps = async () => {
   operations.push(getServices());
   operations.push(getSlogans());
 
-  const [servicesRes, introsRes] = await Promise.all(operations);
+  let services = [];
+  let slogans = ['NL Label'];
 
-  const { services = [] } = servicesRes?.data || {};
-  const { slogans = [] } = introsRes?.data || {};
+  try {
+    const [servicesRes, slogansRes] = await Promise.all(operations);
+  
+    if (servicesRes.data) {
+      services = servicesRes.data.services;
+    }
+
+    if (slogansRes.data) {
+      slogans = slogansRes.data.slogans;
+    }
+  } catch (e) {
+    console.error(e);
+  }
 
   return {
     props: {

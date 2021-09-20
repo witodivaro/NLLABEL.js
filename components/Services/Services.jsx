@@ -23,12 +23,12 @@ const Services = ({ services }) => {
         {shownServices.map((service) => (
           <Service styles={styles} key={service._id} service={service} />
         ))}
-        {!isShowingMore && (
-          <button onClick={showMore} className={styles["services__show-more"]}>
-            Показать еще
-          </button>
-        )}
       </div>
+      {!isShowingMore && (
+        <button onClick={showMore} className={styles["services__show-more"]}>
+          Показать еще
+        </button>
+      )}
     </section>
   );
 };
