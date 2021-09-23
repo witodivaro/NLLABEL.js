@@ -49,7 +49,7 @@ export const getServerSideProps = async () => {
   try {
     const [servicesRes, slogansRes, teamRes] = await Promise.all(operations);
   
-    if (servicesRes.data) {
+    if (servicesRes.data?.services) {
       services = servicesRes.data.services;
     }
 

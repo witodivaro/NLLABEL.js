@@ -13,7 +13,7 @@ const Services = ({ services }) => {
     ? services.length
     : PREVIEW_SERVICES_COUNT;
   const shownServices = services.slice(0, servicesToShowCount);
-
+    
   const showMore = () => setIsShowingMore(true);
 
   return (
