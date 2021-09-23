@@ -44,7 +44,7 @@ export const getServerSideProps = async () => {
 
   let services = [];
   let team = [];
-  let slogans = ["NL Label"];
+  let slogans = [{ text: "NL Label" }];
 
   try {
     const [servicesRes, slogansRes, teamRes] = await Promise.all(operations);
@@ -53,7 +53,7 @@ export const getServerSideProps = async () => {
       services = servicesRes.data.services;
     }
 
-    if (slogansRes.data) {
+    if (slogansRes.data?.slogans?.length) {
       slogans = slogansRes.data.slogans;
     }
 
