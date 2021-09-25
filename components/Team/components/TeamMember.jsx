@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 import styles from "./TeamMember.module.scss";
+import { DEFAULT_IMG_SRC } from "../constants";
 
 const TeamMember = ({ member }) => {
   const { img, name, position, description } = member;
@@ -10,7 +11,7 @@ const TeamMember = ({ member }) => {
     <div className={styles["team-member__tabcontent"]}>
       <div className={styles["team-member__photo-container"]}>
         <Image
-          src={img}
+          src={img || DEFAULT_IMG_SRC}
           alt={name}
           width={320}
           height={320}

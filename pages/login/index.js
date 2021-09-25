@@ -16,7 +16,6 @@ const Login = () => {
   const { values, handleChange } = useForm({ password: "" });
 
   const handleSubmit = async (e) => {
-    console.log(values);
     e.preventDefault();
     try {
       await signIn(values.password);

@@ -1,6 +1,9 @@
 import React from "react";
 
+import styles from "./Admin.module.scss";
+
 import Slogans from "../../components/Admin/Slogans/Slogans";
+import SmartTeam from "../../components/Admin/Team/Smartteam";
 import { withAuth } from "../../middleware/withAuth";
 import { getServices } from "../api/services";
 import { getSlogans } from "../api/slogans";
@@ -8,8 +11,9 @@ import { getTeam } from "../api/team";
 
 const Admin = ({ slogans, team, services }) => {
   return (
-    <div>
+    <div className={styles.admin}>
       <Slogans slogans={slogans} />
+      <SmartTeam team={team} />
     </div>
   );
 };

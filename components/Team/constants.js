@@ -14,3 +14,5 @@ export const TEAM_DATA = [
     img: "/img/witodivaro-photo-desktop.jpg",
   },
 ];
+
+export const DEFAULT_IMG_SRC = "/img/skrillex-photo-desktop@1x.png";

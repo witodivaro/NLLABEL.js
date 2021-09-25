@@ -3,9 +3,9 @@ import React from "react";
 
 import styles from "./Button.module.scss";
 
-const Button = ({ onClick, children, className }) => {
+const Button = ({ children, className, ...props }) => {
   return (
-    <button onClick={onClick} className={clsx(styles.button, className)}>
+    <button type="button" className={clsx(styles.button, className)} {...props}>
       {children}
     </button>
   );

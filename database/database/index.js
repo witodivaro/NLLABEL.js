@@ -1,4 +1,4 @@
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from "uuid";
 
 import { converters } from "./converters";
 
@@ -85,13 +85,10 @@ class Database {
     const updatedData = {};
 
     for (const key in this.data[collection]) {
-      console.log(this.data[collection][key]._id, _id);
       if (this.data[collection][key]._id !== _id) {
         updatedData[key] = this.data[collection][key];
       }
     }
-
-    console.log(updatedData)
 
     await this.update(collection, updatedData);
   }

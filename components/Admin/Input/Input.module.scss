@@ -1,0 +1,14 @@
+.input {
+  display: flex;
+  flex-direction: column;
+
+  input,
+  textarea {
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+
+  textarea {
+    min-height: 150px;
+  }
+}
