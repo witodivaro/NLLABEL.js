@@ -3,20 +3,11 @@ import React, { useCallback, useRef } from "react";
 
 import styles from "./Input.module.scss";
 
-const Input = ({ className, label, elem = "input", value, ...inputProps }) => {
-  const Element = useRef((props) => {
-    switch (elem) {
-      case "textarea":
-        return <textarea value={value} {...props} />;
-      default:
-        return <input value={value} {...props} />;
-    }
-  }).current;
-
+const Input = ({ className, label, value, ...inputProps }) => {
   return (
     <label className={clsx(className, styles.input)}>
       {label}
-      <Element type="text" {...inputProps} />
+      <input type="text" value={value} {...inputProps} />
     </label>
   );
 };

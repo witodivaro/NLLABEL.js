@@ -7,6 +7,7 @@ import { useForm } from "../../../hooks/useForm";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import ImageCropModal from "../ImageCrop/ImageCropModal";
+import TextArea from "../Input/TextArea";
 
 const TeamMember = ({ teamMember, onDelete, onSave }) => {
   const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
@@ -68,13 +69,13 @@ const TeamMember = ({ teamMember, onDelete, onSave }) => {
         value={values.position}
         onChange={handleChange}
       />
-      <Input
+      <TextArea
         required
         spellCheck="false"
-        elem="textarea"
         type="text"
         label="Описание"
         name="description"
+        multiple
         value={values.description}
         onChange={handleChange}
       />
