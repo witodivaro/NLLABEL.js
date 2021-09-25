@@ -117,7 +117,7 @@
       background-size: 100%;
     }
 
-    &--email {
+    &_email {
       background-image: url("/img/email-background@1x.jpg");
 
       @include retina {
@@ -132,7 +132,7 @@
       }
     }
 
-    &--telegram {
+    &_telegram {
       background-image: url("/img/telegram-background@1x.jpg");
 
       @include retina {
@@ -147,7 +147,7 @@
       }
     }
 
-    &--phone {
+    &_phone {
       background-image: url("/img/phone-background@1x.jpg");
 
       @include retina {

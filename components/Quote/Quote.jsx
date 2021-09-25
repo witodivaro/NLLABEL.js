@@ -1,10 +1,11 @@
+import clsx from "clsx";
 import React from "react";
 
 import styles from "./Quote.module.scss";
 
 const Quote = ({ className }) => {
   return (
-    <div className={`${styles.quote} ${className}`}>
+    <div className={clsx(styles.quote, className)}>
       <p className={styles["quote__text"]}>
         В начале своего пути каждый музыкант обязан получить поддержку, чтобы
         полностью раскрыть свой талант. Мы оказываем эту поддержку всем

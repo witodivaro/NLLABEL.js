@@ -15,6 +15,8 @@ export default async function handler(req, res) {
 const login = async (req, res) => {
   const { password } = req.body;
 
+  console.log(password, process.env.ADMIN_PASSWORD);
+
   if (password !== process.env.ADMIN_PASSWORD) {
     return res.status(403).send();
   }

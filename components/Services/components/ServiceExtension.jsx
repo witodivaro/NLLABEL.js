@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React, { useState } from "react";
 
 import Checkbox from "../../Checkbox/Checkbox";
@@ -13,9 +14,10 @@ const ServiceExtension = ({ extension, onClick, styles }) => {
 
   return (
     <label
-      className={`${styles.services__extension} ${
-        isActive ? styles["services__extension--active"] : ""
-      }`}
+      className={clsx(
+        styles.services__extension,
+        isActive && styles.services__extension_active
+      )}
     >
       <input
         onChange={handleChange}

@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React from "react";
 
 import infoStyles from "../../Info/Info.module.scss";
@@ -8,12 +9,15 @@ const Slide = ({ slide, isActive, styles }) => {
   if (!isActive) return null;
 
   return (
-    <div className={`${styles["slider__tabcontent"]} ${styles.fadeIn}`}>
-      <h2 className={`${infoStyles["info__header"]} ${styles.slider__header}`}>
+    <div className={clsx(styles.slider__tabcontent, styles.fadeIn)}>
+      <h2 className={clsx(infoStyles.info__header, styles.slider__header)}>
         {title}
       </h2>
       <p
-        className={`${infoStyles["info__description"]} ${styles.slider__description}`}
+        className={clsx(
+          infoStyles.info__description,
+          styles.slider__description
+        )}
       >
         {description}
       </p>
@@ -21,9 +25,7 @@ const Slide = ({ slide, isActive, styles }) => {
         <h3 className={styles["slider__sub-header"]}>{subHeader}</h3>
         <div className={styles["slider__sub-wrapper"]}>
           <p className={styles["slider__info"]}>{info}</p>
-          <p
-            className={`${styles["slider__info"]} ${styles["slider__info--wide"]}`}
-          >
+          <p className={clsx(styles.slider__info, styles.slider__info_wide)}>
             {details instanceof Array
               ? details.map((detail) => (
                   <React.Fragment key={detail}>

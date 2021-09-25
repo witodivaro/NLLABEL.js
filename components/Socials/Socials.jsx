@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React from "react";
 
 import styles from "./Socials.module.scss";
@@ -10,7 +11,7 @@ const Socials = ({ className }) => {
           href={process.env.NEXT_PUBLIC_VK_URL}
           target="_blank"
           rel="noreferrer"
-          className={`${styles["socials__link"]} ${styles["socials__link--vk"]}`}
+          className={clsx(styles.socials__link, styles.socials__link_vk)}
         >
           <span className="visually-hidden">ВКонтакте</span>
         </a>
@@ -20,7 +21,7 @@ const Socials = ({ className }) => {
           href={process.env.NEXT_PUBLIC_TELEGRAM_URL}
           target="_blank"
           rel="noreferrer"
-          className={`${styles.socials__link} ${styles["socials__link--telegram"]}`}
+          className={clsx(styles.socials__link, styles.socials__link_telegram)}
         >
           <span className="visually-hidden">Телеграмм</span>
         </a>

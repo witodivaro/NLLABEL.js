@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React from "react";
 
 import styles from "./Link.module.scss";
@@ -8,7 +9,7 @@ const Link = ({ className, children, color }) => {
       href={process.env.NEXT_PUBLIC_TELEGRAM_URL}
       target="_blank"
       rel="noreferrer"
-      className={`${styles.link} ${styles[`link--${color}`]} ${className}`}
+      className={clsx(styles.link, styles[`link_${color}`], className)}
     >
       {children}
     </a>

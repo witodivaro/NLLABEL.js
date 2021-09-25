@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React from "react";
 import Link from "../Link/Link";
 
@@ -22,7 +23,7 @@ const Info = () => {
           <span className={styles["info__description--pink"]}>Минска</span>.
         </p>
 
-        <Link className={`${styles["info__link"]} ${styles.button}`}>
+        <Link className={clsx(styles.info__link, styles.button)}>
           Подробнее
         </Link>
 

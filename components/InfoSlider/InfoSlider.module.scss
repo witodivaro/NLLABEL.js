@@ -84,7 +84,7 @@
       text-align: center;
     }
 
-    &--wide {
+    &_wide {
       margin-left: 30px;
       width: 520px;
       font-size: 14px;
@@ -140,19 +140,19 @@
       background-color: $dark-pink;
     }
 
-    &--recording {
+    &_recording {
       background-image: url("/img/microphone-icon.png");
     }
 
-    &--music {
+    &_music {
       background-image: url("/img/headphones-icon.png");
     }
 
-    &--promotion {
+    &_promotion {
       background-image: url("/img/disco-icon.png");
     }
 
-    &--active {
+    &_active {
       background-color: $primary;
 
       &:hover {

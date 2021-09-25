@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React from "react";
 import Anchor from "./Anchor";
 
@@ -8,7 +9,10 @@ const Navigation = ({ className }) => {
     <nav className={`${styles.navigation} ${className}`}>
       <Anchor
         href="#intro"
-        className={`${styles.navigation__button} ${styles["navigation__button--active"]}`}
+        className={clsx(
+          styles.navigation__button,
+          styles.navigation__button_active
+        )}
       >
         Привет
       </Anchor>

@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React from "react";
 
 import styles from "./Contacts.module.scss";
@@ -8,7 +9,7 @@ const Contacts = () => {
       <h2 className={styles["contacts__header"]}>Наши контакты</h2>
       <div className={styles["contacts__item"]}>
         <p
-          className={`${styles["contacts__photo"]} ${styles["contacts__photo--email"]}`}
+          className={clsx(styles.contacts__photo, styles.contacts__photo_email)}
         />
         <h4 className={styles["contacts__name"]}>Email</h4>
         <a
@@ -20,8 +21,11 @@ const Contacts = () => {
       </div>
       <div className={styles["contacts__item"]}>
         <p
-          className={`${styles["contacts__photo"]} ${styles["contacts__photo--telegram"]}`}
-        ></p>
+          className={clsx(
+            styles.contacts__photo,
+            styles.contacts__photo_telegram
+          )}
+        />
         <h4 className={styles["contacts__name"]}>Telegram</h4>
         <p className={styles["contacts__details"]}>
           <a
@@ -35,8 +39,8 @@ const Contacts = () => {
       </div>
       <div className={styles["contacts__item"]}>
         <p
-          className={`${styles["contacts__photo"]} ${styles["contacts__photo--phone"]}`}
-        ></p>
+          className={clsx(styles.contacts__photo, styles.contacts__photo_phone)}
+        />
         <h4 className={styles["contacts__name"]}>Телефон</h4>
         <a
           href="tel:"
