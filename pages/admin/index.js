@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./Admin.module.scss";
 
 import Slogans from "../../components/Admin/Slogans/Slogans";
-import SmartTeam from "../../components/Admin/Team/Smartteam";
+import SmartTeam from "../../components/Admin/Team/SmartTeam";
 import { withAuth } from "../../middleware/withAuth";
 import { getServices } from "../api/services";
 import { getSlogans } from "../api/slogans";
