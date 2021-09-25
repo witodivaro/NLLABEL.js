@@ -75,7 +75,6 @@ const ImageCropModal = ({ photo, onCancel, onSave }) => {
           onChange={handleChange}
           src={photo.src}
         />
-        ;
         <button
           type="button"
           onClick={handleSave}
