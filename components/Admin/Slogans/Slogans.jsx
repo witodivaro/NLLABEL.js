@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import Button from "../Button/Button";
-import Slogan from "../Slogan/Slogan";
+import SlogansList from "../SlogansList/SlogansList";
 
 import { saveSlogan, createSlogan, deleteSlogan } from "./actions/actions";
 
@@ -14,7 +14,7 @@ const Slogans = ({ slogans }) => {
 
   const toggleIsAddingSlogan = () => setIsAddingSlogan(!isAddingSlogan);
   const toggleIsOpen = () => {
-    if (isOpen && isAddingSlogan) setIsAddingSlogan(false);
+    if (isOpen) setIsAddingSlogan(false);
     setIsOpen(!isOpen);
   };
 
@@ -44,6 +44,8 @@ const Slogans = ({ slogans }) => {
   };
 
   const handleDelete = async (slogan) => {
+    if (!slogan._id) return setIsAddingSlogan(false);
+
     try {
       const deletedSlogan = await deleteSlogan(slogan);
 
@@ -63,29 +65,18 @@ const Slogans = ({ slogans }) => {
         Слоганы
       </Button>
       {isOpen && (
-        <Button onClick={toggleIsAddingSlogan}>
-          {isAddingSlogan ? "Отмена" : "+ Добавить слоган"}
-        </Button>
-      )}
-      {isOpen && (
-        <div className={styles.slogans__container}>
-          {isAddingSlogan && (
-            <Slogan
-              key="new"
-              slogan={{}}
-              onSave={handleSave}
-              onDelete={toggleIsAddingSlogan}
-            />
-          )}
-          {localSlogans.map((slogan) => (
-            <Slogan
-              key={slogan._id}
-              slogan={slogan}
-              onSave={handleSave}
-              onDelete={handleDelete}
-            />
-          ))}
-        </div>
+        <>
+          <Button onClick={toggleIsAddingSlogan}>
+            {isAddingSlogan ? "Отмена" : "+ Добавить слоган"}
+          </Button>
+          <SlogansList
+            isAddingSlogan={isAddingSlogan}
+            slogans={localSlogans}
+            onSave={handleSave}
+            onDelete={handleDelete}
+            className={styles.slogans__container}
+          />
+        </>
       )}
     </div>
   );

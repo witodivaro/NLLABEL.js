@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 // left: 37, up: 38, right: 39, down: 40,
 // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
@@ -6,7 +6,15 @@ const keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
 
 const preventDefault = (e) => e.preventDefault();
 
+let rootElem = null;
+
+export const setScrollElement = (elem) => {
+  rootElem = elem;
+};
+
 const useScroll = (onScroll) => {
+  if (!rootElem) throw new Error("No scroll element");
+
   if (!onScroll) {
     throw new Error("You must pass onScroll function to the useScroll");
   }
@@ -14,7 +22,7 @@ const useScroll = (onScroll) => {
   const supportsPassive = useRef(false);
 
   try {
-    window.addEventListener(
+    rootElem.addEventListener(
       "test",
       null,
       Object.defineProperty({}, "passive", {
@@ -52,10 +60,10 @@ const useScroll = (onScroll) => {
           onScroll(e, isScrollingUp);
         }
 
-        window.removeEventListener("touchend", handleTouchEnd);
+        rootElem.removeEventListener("touchend", handleTouchEnd);
       };
 
-      window.addEventListener("touchend", handleTouchEnd);
+      rootElem.addEventListener("touchend", handleTouchEnd);
     },
     [onScroll]
   );
@@ -71,10 +79,10 @@ const useScroll = (onScroll) => {
   );
 
   useEffect(() => {
-    window.addEventListener("DOMMouseScroll", handleScroll, false); // older FF
-    window.addEventListener("wheel", handleScroll, wheelOpt); // modern desktop
-    window.addEventListener("touchstart", handleTouchMove, wheelOpt); // mobile
-    window.addEventListener("keydown", handleScrollKeys, false);
+    rootElem.addEventListener("DOMMouseScroll", handleScroll, false); // older FF
+    rootElem.addEventListener("wheel", handleScroll, wheelOpt); // modern desktop
+    rootElem.addEventListener("touchstart", handleTouchMove, wheelOpt); // mobile
+    rootElem.addEventListener("keydown", handleScrollKeys, false);
   }, [handleScrollKeys, handleTouchMove, wheelOpt, handleScroll]);
 };
 

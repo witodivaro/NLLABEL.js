@@ -1,7 +1,7 @@
 import React from "react";
 
 import Slogans from "../../components/Admin/Slogans/Slogans";
-import { authenticate } from "../../utils/auth";
+import { withAuth } from "../../middleware/withAuth";
 import { getServices } from "../api/services";
 import { getSlogans } from "../api/slogans";
 import { getTeam } from "../api/team";
@@ -14,18 +14,7 @@ const Admin = ({ slogans, team, services }) => {
   );
 };
 
-export const getServerSideProps = async (ctx) => {
-  const isAuthenticated = await authenticate(ctx.req, { csrf: false });
-
-  if (!isAuthenticated) {
-    return {
-      redirect: {
-        destination: "/login",
-        permanent: false,
-      },
-    };
-  }
-
+export const getServerSideProps = withAuth(async (ctx) => {
   const operations = [getSlogans(), getTeam(), getServices()];
 
   let slogans = [];
@@ -55,6 +44,6 @@ export const getServerSideProps = async (ctx) => {
       services,
     },
   };
-};
+});
 
 export default Admin;

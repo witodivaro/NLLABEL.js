@@ -5,7 +5,7 @@ import { JWT_TOKEN_SECRET_KEY } from "../config/config";
 
 const ACCESS_TOKEN_EXPIRATION_TIME = 60 * 60;
 
-export const authenticate = async (req, options) => {
+export const authenticate = async (req, options = {}) => {
   const { csrf = true } = options;
 
   let isAllowed = true;
@@ -16,7 +16,6 @@ export const authenticate = async (req, options) => {
 
   if (csrf) {
     const csrfToken = req.headers["x-csrf-token"];
-    console.log(accessToken, csrfToken);
     if (!(await verifyCsrfToken(csrfToken, accessToken))) isAllowed = false;
   }
 

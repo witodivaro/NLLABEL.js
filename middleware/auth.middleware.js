@@ -1,13 +1,11 @@
 import { authenticate } from "../utils/auth";
 
-const authWall = async (req, res) => {
-  const isAuthenticated = await authenticate(req, { csrf: true });
+const authMiddleware = async (req, res) => {
+  const isAuthenticated = await authenticate(req);
 
   if (!isAuthenticated) {
     res.status(403).send();
   }
-
-  return { passed: isAuthenticated };
 };
 
-export default authWall;
+export default authMiddleware;

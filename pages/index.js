@@ -1,3 +1,5 @@
+import { useRef, useState } from "react";
+
 import Contacts from "../components/Contacts/Contacts";
 import ContactUs from "../components/ContactUs/ContactUs";
 import Doubts from "../components/Doubts/Doubts";
@@ -14,25 +16,33 @@ import { getSlogans } from "./api/slogans";
 import { getServices } from "./api/services";
 import Head from "../components/Head/Head";
 import { getTeam } from "./api/team";
+import { setScrollElement } from "../hooks/useScroll";
 
 function App({ services, slogans, team }) {
+  const [rootRef, setRootRef] = useState(null);
+  setScrollElement(rootRef);
+
   return (
-    <>
-      <Head />
-      <Header />
-      <main>
-        <Intro slogans={slogans} />
-        <Info />
-        <InfoSlider />
-        <Services services={services} />
-        <Doubts />
-        <Team team={team} />
-        <ContactUs />
-        <Contacts />
-      </main>
-      <Footer />
-      <ScrollUp />
-    </>
+    <div ref={setRootRef}>
+      {rootRef && (
+        <>
+          <Head />
+          <Header />
+          <main>
+            <Intro slogans={slogans} />
+            <Info />
+            <InfoSlider />
+            <Services services={services} />
+            <Doubts />
+            <Team team={team} />
+            <ContactUs />
+            <Contacts />
+          </main>
+          <Footer />
+          <ScrollUp />
+        </>
+      )}
+    </div>
   );
 }
 
@@ -48,7 +58,7 @@ export const getServerSideProps = async () => {
 
   try {
     const [servicesRes, slogansRes, teamRes] = await Promise.all(operations);
-  
+
     if (servicesRes.data?.services) {
       services = servicesRes.data.services;
     }
@@ -68,7 +78,7 @@ export const getServerSideProps = async () => {
     props: {
       services,
       slogans: slogans.map(({ text }) => text),
-      team
+      team,
     },
   };
 };

@@ -1,7 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import database from "../../database/database";
-import authWall from "../../middleware/auth.middleware";
+import authMiddleware from "../../middleware/auth.middleware";
+import { createMiddleware } from "../../middleware/createMiddleware";
 import createApiHandler from "../../utils/createApiHandler";
 
 export default async function handler(req, res) {
@@ -10,26 +11,25 @@ export default async function handler(req, res) {
       return getSlogansHandler(req, res);
   }
 
-  const { passed } = await authWall(req, res);
-  if (!passed) return;
-  console.log(passed);
-
-  switch (req.method) {
-    case "PUT":
-      return putSloganHandler(req, res);
-    case "DELETE":
-      return deleteSloganHandler(req, res);
-    case "POST":
-      return postSloganHandler(req, res);
-    default:
-      res.status(404).send();
-  }
+  return createMiddleware([
+    authMiddleware,
+    (req, res) => {
+      switch (req.method) {
+        case "PUT":
+          return putSloganHandler(req, res);
+        case "DELETE":
+          return deleteSloganHandler(req, res);
+        case "POST":
+          return postSloganHandler(req, res);
+        default:
+          res.status(404).send();
+      }
+    },
+  ])(req, res);
 }
 
 const postSloganHandler = async (req, res) => {
   try {
-    console.log(req.headers);
-
     const { text } = req.body;
 
     const slogan = await database.insertOne("slogans", { text });
