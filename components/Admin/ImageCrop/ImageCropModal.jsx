@@ -18,14 +18,17 @@ export const cropImage = async (payload) => {
 
 const ImageCropModal = ({ photo, onCancel, onSave }) => {
   const containerRef = useRef(null);
+  const [dimensions, setDimensions] = useState(null);
+
   const [crop, setCrop] = useState({
-    unit: "px",
-    width: 300,
-    height: 300,
+    x: 25,
+    y: 25,
+    unit: "%",
+    width: 50,
     aspect: 1,
   });
 
-  const handleChange = (crop, percentage) => {
+  const handleChange = (crop) => {
     setCrop(crop);
   };
 
@@ -38,7 +41,7 @@ const ImageCropModal = ({ photo, onCancel, onSave }) => {
       top: y,
       left: x,
       photo: { file: photo.file },
-      imageWidth: containerRef.current?.width || 500,
+      imageWidth: dimensions.width,
     });
 
     onSave(path);
@@ -63,7 +66,16 @@ const ImageCropModal = ({ photo, onCancel, onSave }) => {
   return (
     <div className={styles.modal} onClick={handleModalClick}>
       <div ref={containerRef} className={styles.modal__container}>
-        <ReactCrop crop={crop} onChange={handleChange} src={photo.src} />;
+        <ReactCrop
+          onImageLoaded={(e) => {
+            const { width, heigth } = e;
+            setDimensions({ width, heigth });
+          }}
+          crop={crop}
+          onChange={handleChange}
+          src={photo.src}
+        />
+        ;
         <button
           type="button"
           onClick={handleSave}
