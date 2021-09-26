@@ -10,8 +10,7 @@ const logger = winston.createLogger({
       format: winston.format.combine(
         winston.format.colorize(),
         winston.format.simple(),
-        winston.format.json(),
-        winston.format.splat()
+        winston.format.json()
       ),
     }),
   ],

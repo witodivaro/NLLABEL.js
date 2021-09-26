@@ -41,7 +41,7 @@ const postCrop = async (req, res) => {
 
     res.status(200).json({ path: relativeImgPath });
   } catch (err) {
-    logger.error("CROP: An error occured: %o", { err });
+    logger.error(`CROP: An error occured: ${JSON.stringify(err, null, 2)}`);
     res.status(500).send();
   }
 };
