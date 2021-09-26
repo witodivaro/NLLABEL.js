@@ -10,7 +10,7 @@ import {
 } from "./actions/actions";
 
 import styles from "./Team.module.scss";
-import { getFormDataFromObj, getUpdatedArray } from "../../../utils/utils";
+import { getUpdatedArray } from "../../../utils/utils";
 
 const SmartTeam = ({ team }) => {
   const [localTeam, setLocalTeam] = useState(team);
@@ -27,7 +27,7 @@ const SmartTeam = ({ team }) => {
   const handleSave = async (update) => {
     let updatedTeamMember = null;
 
-    let newTeam = localTeam;
+    let newTeam = [...localTeam];
 
     try {
       if (update._id) {

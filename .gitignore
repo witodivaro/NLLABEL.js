@@ -39,3 +39,4 @@ yarn-error.log*
 !.elasticbeanstalk/*.global.yml
 
 /database/data/
+/public/img/uploaded/*
