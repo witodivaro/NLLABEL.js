@@ -8,16 +8,16 @@ import { multiplyInt, parseObjNumbers } from "../../utils/utils";
 import { getImgPath } from "../utils/utils";
 
 import logger from "../../utils/logger";
+import authMiddleware from "../../middleware/auth.middleware";
 
 const postCrop = async (req, res) => {
   try {
     const { height, width, top, left, imageWidth } = parseObjNumbers(req.body);
     const { photo } = req.files;
 
-    const [imgPath, relativeImgPath] = getImgPath(photo.path);
+    const [imgPath, relativeImgPath] = getImgPath(photo);
     const actualDimensions = sizeOf(photo.path);
     const multiplier = actualDimensions.width / imageWidth;
-
     const params = {
       height: multiplyInt(height, multiplier),
       width: multiplyInt(width, multiplier),
@@ -47,4 +47,4 @@ const postCrop = async (req, res) => {
   }
 };
 
-export default createMiddleware([fileMiddleware, postCrop]);
+export default createMiddleware([authMiddleware, fileMiddleware, postCrop]);
