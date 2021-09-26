@@ -9,11 +9,9 @@ export const getRootPath = () => {
   return rootPath;
 };
 
-export const getImgPath = (photo) => {
-  const filenameParts = photo.name.split(".");
-  const extension = filenameParts[filenameParts.length - 1];
-  const paths = photo.path.split(path.sep);
-  const filename = [paths[paths.length - 1], extension].join(".");
+export const getImgPath = (photoPath) => {
+  const paths = photoPath.split(path.sep);
+  const filename = paths[paths.length - 1];
   const rootPath = getRootPath();
   const fullImgPath = path.resolve(
     rootPath,

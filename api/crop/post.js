@@ -15,7 +15,7 @@ const postCrop = async (req, res) => {
     const { height, width, top, left, imageWidth } = parseObjNumbers(req.body);
     const { photo } = req.files;
 
-    const [imgPath, relativeImgPath] = getImgPath(photo);
+    const [imgPath, relativeImgPath] = getImgPath(photo.path);
     const actualDimensions = sizeOf(photo.path);
     const multiplier = actualDimensions.width / imageWidth;
     const params = {

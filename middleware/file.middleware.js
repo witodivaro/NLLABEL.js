@@ -1,7 +1,7 @@
 import formidable from "formidable";
 
 const fileMiddleware = async (req, res) => {
-  const form = formidable({ multiples: true });
+  const form = formidable({ multiples: true, keepExtensions: true });
 
   try {
     const [fields, files] = await new Promise((resolve, reject) => {
