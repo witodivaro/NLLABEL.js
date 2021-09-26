@@ -9,7 +9,9 @@ const logger = winston.createLogger({
       level: "info",
       format: winston.format.combine(
         winston.format.colorize(),
-        winston.format.simple()
+        winston.format.simple(),
+        winston.format.json(),
+        winston.format.splat()
       ),
     }),
   ],
