@@ -1,9 +1,11 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import database from "../../database/database";
+import { createMiddleware } from "../../middleware/createMiddleware";
+import { loggerMiddleware } from "../../middleware/logger.middleware";
 import createApiHandler from "../../utils/createApiHandler";
 
-export default function handler(req, res) {
+async function handler(req, res) {
   switch (req.method) {
     case "GET":
       return getServicesHandler(req, res);
@@ -23,3 +25,5 @@ export const getServicesHandler = async (req, res) => {
 };
 
 export const getServices = createApiHandler("services", "GET");
+
+export default createMiddleware([loggerMiddleware, handler]);

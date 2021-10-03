@@ -2,12 +2,14 @@
 
 import postSloganHandler from "../../api/slogans/post";
 import putSloganHandler from "../../api/slogans/put";
-import deleteSloganHandler from "../../api/slogans/put";
+import deleteSloganHandler from "../../api/slogans/delete";
 import getSlogansHandler from "../../api/slogans/get";
 
 import createApiHandler from "../../utils/createApiHandler";
+import { createMiddleware } from "../../middleware/createMiddleware";
+import { loggerMiddleware } from "../../middleware/logger.middleware";
 
-export default async function handler(req, res) {
+const handler = async (req, res) => {
   switch (req.method) {
     case "GET":
       return getSlogansHandler(req, res);
@@ -20,6 +22,8 @@ export default async function handler(req, res) {
     default:
       res.status(404).send();
   }
-}
+};
 
 export const getSlogans = createApiHandler("slogans", "GET");
+
+export default createMiddleware([loggerMiddleware, handler]);

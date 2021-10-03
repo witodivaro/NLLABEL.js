@@ -11,7 +11,13 @@ const fileMiddleware = async (req, res) => {
       });
     });
 
-    req.body = fields;
+    const xssProtectedFields = Object.keys(fields).reduce((encoded, key) => {
+      const value = fields[key];
+
+      encoded[key] = encodeURI(value);
+    }, {});
+
+    req.body = xssProtectedFields;
     req.files = files;
   } catch (err) {
     console.error(err);

@@ -1,8 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
+import { createMiddleware } from "../../middleware/createMiddleware";
+import { loggerMiddleware } from "../../middleware/logger.middleware";
 import { createCSRFToken, createJwtToken } from "../../utils/auth";
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   switch (req.method) {
     case "POST":
       return login(req, res);
@@ -27,3 +29,5 @@ const login = async (req, res) => {
   ]);
   res.status(200).send();
 };
+
+export default createMiddleware([loggerMiddleware, handler]);
