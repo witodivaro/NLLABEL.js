@@ -12,9 +12,11 @@ const fileMiddleware = async (req, res) => {
     });
 
     const xssProtectedFields = Object.keys(fields).reduce((encoded, key) => {
+      console.log(key);
       const value = fields[key];
 
       encoded[key] = encodeURI(value);
+      return encoded;
     }, {});
 
     req.body = xssProtectedFields;
