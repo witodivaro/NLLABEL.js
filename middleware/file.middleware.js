@@ -1,4 +1,5 @@
 import formidable from "formidable";
+import xss from "xss";
 
 const fileMiddleware = async (req, res) => {
   const form = formidable({ multiples: true, keepExtensions: true });
@@ -11,15 +12,7 @@ const fileMiddleware = async (req, res) => {
       });
     });
 
-    const xssProtectedFields = Object.keys(fields).reduce((encoded, key) => {
-      console.log(key);
-      const value = fields[key];
-
-      encoded[key] = encodeURI(value);
-      return encoded;
-    }, {});
-
-    req.body = xssProtectedFields;
+    req.body = fields;
     req.files = files;
   } catch (err) {
     console.error(err);

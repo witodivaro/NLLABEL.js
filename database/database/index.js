@@ -1,4 +1,5 @@
 import { v4 as uuid } from "uuid";
+import { protectObjectXss } from "../../api/utils/utils";
 
 import { converters } from "./converters";
 
@@ -25,14 +26,14 @@ class Database {
     this.data[collection] = JSON.parse(data);
 
     const timeout = setTimeout(
-      this._clearData.bind(this, collection),
+      this._clearCache.bind(this, collection),
       this.DATA_EXPIRY_TIME
     );
 
     this._timeouts[collection] = timeout;
   }
 
-  async _clearData(collection) {
+  async _clearCache(collection) {
     if (this._timeouts[collection]) {
       clearTimeout(this._timeouts[collection]);
     }
@@ -66,15 +67,17 @@ class Database {
 
     await this.update(collection, updatedData);
 
-    this._clearData(collection);
+    this._clearCache(collection);
 
     return update;
   }
 
   async update(collection, data) {
-    await this._writeData(collection, JSON.stringify(data));
+    const xssProtected = protectObjectXss(data);
+    console.log(xssProtected);
+    await this._writeData(collection, JSON.stringify(xssProtected));
 
-    this._clearData(collection);
+    this._clearCache(collection);
   }
 
   async deleteOne(collection, _id) {

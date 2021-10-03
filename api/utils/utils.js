@@ -1,5 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
+import xss from "xss";
 
 export const getRootPath = () => {
   const splitPath = __dirname.split(path.sep);
@@ -36,4 +37,22 @@ export const uploadImgFromFile = async (file) => {
   await fs.rename(file.path, fullImgPath);
 
   return relativeImgPath;
+};
+
+export const protectObjectXss = (obj) => {
+  if (typeof obj !== "object") throw new Error("Received a non-object type");
+
+  return Object.keys(obj).reduce((protectedObj, key) => {
+    const value = obj[key];
+
+    if (typeof value === "object") {
+      protectedObj[key] = protectObjectXss(value);
+    } else if (typeof value === "string") {
+      protectedObj[key] = xss(value);
+    } else {
+      protectedObj[key] = value;
+    }
+
+    return protectedObj;
+  }, {});
 };
