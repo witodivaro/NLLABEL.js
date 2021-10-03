@@ -74,7 +74,6 @@ class Database {
 
   async update(collection, data) {
     const xssProtected = protectObjectXss(data);
-    console.log(xssProtected);
     await this._writeData(collection, JSON.stringify(xssProtected));
 
     this._clearCache(collection);
