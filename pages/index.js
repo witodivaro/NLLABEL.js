@@ -59,7 +59,7 @@ export const getServerSideProps = async () => {
   try {
     const [servicesRes, slogansRes, teamRes] = await Promise.all(operations);
 
-    if (servicesRes.data?.services) {
+    if (servicesRes.data?.services?.length) {
       services = servicesRes.data.services;
     }
 
@@ -67,7 +67,7 @@ export const getServerSideProps = async () => {
       slogans = slogansRes.data.slogans;
     }
 
-    if (teamRes.data) {
+    if (teamRes.data?.team?.length) {
       team = teamRes.data.team;
     }
   } catch (e) {
